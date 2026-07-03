@@ -1,0 +1,38 @@
+                        }`}
+                      >
+                        <div 
+                          className={index === 0 ? "first-letter:float-left first-letter:text-6xl first-letter:font-serif first-letter:font-bold first-letter:mr-3.5 first-letter:leading-[0.8] first-letter:mt-1 first-letter:text-[var(--pink-text)] dark:first-letter:text-pink-200" : ""}
+                          dangerouslySetInnerHTML={{ __html: renderParagraphWithHighlights(para, index, currentChapter.id) }} 
+                          onClick={(e) => {
+                            const target = e.target as HTMLElement;
+                            const noteElement = target.closest('.novel-note');
+                            if (noteElement) {
+                              const title = noteElement.getAttribute('title');
+                              if (title) {
+                                toast.info(`Chú thích: ${title}`);
+                              }
+                            }
+                          }}
+                        />
+                        
+                        {/* Paragraph comments trigger button in the right margin gutter - high-end vintage style */}
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setActiveParagraphIndex(index);
+                          }}
+                          className={`absolute right-0 sm:-right-10 md:-right-14 top-1/2 -translate-y-1/2 flex items-center justify-center w-7 h-7 rounded-full border shadow-3xs transition-all duration-250 cursor-pointer z-20 ${
+                            paragraphCommentsCount > 0 
+                              ? 'opacity-100 bg-[#8A7870] text-white border-[#8A7870] hover:scale-110' 
+                              : 'opacity-40 sm:opacity-0 sm:group-hover:opacity-100 bg-white dark:bg-[#1e1d1b] hover:bg-[#FAF5F0] border-[#E5D5C8]/55 text-[#8A7870] scale-95 hover:scale-105'
+                          }`}
+                          title="Bình luận đoạn này"
+                        >
+                          <MessageSquare className="h-3.5 w-3.5" /> 
+                          {paragraphCommentsCount > 0 && (
+                            <span className="absolute -top-1.5 -right-1.5 bg-[#8E6969] text-white text-[8px] font-sans font-extrabold leading-none px-0.5 rounded-full min-w-[13px] h-[13px] flex items-center justify-center border border-white dark:border-[#1e1d1b] z-30">
+                              {paragraphCommentsCount}
+                            </span>
+                          )}
+                        </button>

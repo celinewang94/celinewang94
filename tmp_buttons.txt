@@ -1,0 +1,36 @@
+                        const currIdx = novelChaps.findIndex(c => c.id === currentChapter.id);
+                        if (currIdx > 0) {
+                          handleSelectChapter(currentNovel.id, novelChaps[currIdx - 1].id);
+                        }
+                      }}
+                      className="px-3 py-1.5 bg-white dark:bg-[#252422] hover:bg-[#FAF5F0] dark:hover:bg-stone-800 text-[11px] font-semibold rounded-lg border border-[#E5D5C8]/40 disabled:opacity-40 text-gray-800 dark:text-[#eae1d8] cursor-pointer transition-colors"
+                      disabled={
+                        chapters
+                          .filter(c => c.novelId === currentNovel.id)
+                          .sort((a, b) => a.chapterNumber - b.chapterNumber)
+                          .findIndex(c => c.id === currentChapter.id) === 0
+                      }
+                    >
+                      ◀ Chương trước
+                    </button>
+                    <button
+                      onClick={() => {
+                        const novelChaps = chapters
+                          .filter(c => c.novelId === currentNovel.id)
+                          .sort((a, b) => a.chapterNumber - b.chapterNumber);
+                        const currIdx = novelChaps.findIndex(c => c.id === currentChapter.id);
+                        if (currIdx + 1 < novelChaps.length) {
+                          handleSelectChapter(currentNovel.id, novelChaps[currIdx + 1].id);
+                        }
+                      }}
+                      className="px-3 py-1.5 bg-white dark:bg-[#252422] hover:bg-[#FAF5F0] dark:hover:bg-stone-800 text-[11px] font-semibold rounded-lg border border-[#E5D5C8]/40 disabled:opacity-40 text-gray-800 dark:text-[#eae1d8] cursor-pointer transition-colors"
+                      disabled={
+                        chapters
+                          .filter(c => c.novelId === currentNovel.id)
+                          .sort((a, b) => a.chapterNumber - b.chapterNumber)
+                          .findIndex(c => c.id === currentChapter.id) ===
+                        chapters.filter(c => c.novelId === currentNovel.id).length - 1
+                      }
+                    >
+                      Chương sau ▶
+                    </button>

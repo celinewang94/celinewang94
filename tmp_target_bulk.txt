@@ -1,0 +1,11 @@
+
+          <div className="flex flex-col gap-3">
+            {chapters
+              .filter(c => c.novelId === selectedNovel.id && (showTrash ? !!c.deletedAt : !c.deletedAt))
+              .sort((a, b) => b.chapterNumber - a.chapterNumber)
+              .map(chapter => (
+                <div key={chapter.id} className="p-3 bg-white dark:bg-[#1e1d1b] border border-pink-100/50 dark:border-pink-900/20 rounded-xl flex items-center justify-between shadow-xs">
+                  <div>
+                    <h4 className={`font-semibold text-sm flex items-center gap-2 ${showTrash ? 'text-gray-500 dark:text-gray-500' : 'text-gray-800 dark:text-gray-200'}`}>
+                      {chapter.title}
+                      {!showTrash && chapter.status === 'draft' ? (

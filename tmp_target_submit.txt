@@ -1,0 +1,9 @@
+  const handleSubmitNovel = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!novelTitle.trim() || !novelAuthor.trim()) {
+      handleShowMessage('Vui lòng điền đầy đủ tiêu đề và tên tác giả!', 'error');
+      return;
+    }
+
+    const allNovels = PureLoveDatabase.getNovels();
+    const finalCover = (!novelCover.trim() || 

@@ -1,0 +1,8 @@
+{
+  "name": "rì mít Maybe final: Tình Yêu Thuần Khiết",
+  "description": "Web đọc truyện chữ đam mỹ edit/dịch với phong cách cổ điển, sang trọng, thanh lịch.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

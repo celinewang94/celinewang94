@@ -1,0 +1,11 @@
+                    </button>
+                  </div>
+
+                  {/* Right side stats or action */}
+                  <span className="text-[11px] font-medium text-[#8A7870] dark:text-[#eae1d8]/60 uppercase tracking-widest hidden sm:inline">
+                    {currentNovel.title}
+                  </span>
+                </div>
+                
+                {/* Cover and header stats */}
+                <div className="text-center pb-6 border-b border-[#E5D5C8]/20">
